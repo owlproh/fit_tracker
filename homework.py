@@ -1,4 +1,4 @@
-class InfoMessage:    # кончено
+class InfoMessage:
     """Информационное сообщение о тренировке."""
     def __init__(self, training_type: str, duration: float,
                  distance: float, speed: float, calories: float) -> None:
@@ -55,7 +55,7 @@ class Training:
 def main(training: Training) -> None:
     """Главная функция."""
     info = training.show_training_info()
-    print(info.get_message())    # тут типа проблема
+    print(info.get_message())
 
 
 def read_package(workout_type: str, data: list) -> Training:
@@ -66,7 +66,7 @@ def read_package(workout_type: str, data: list) -> Training:
     return trains[workout_type](*data)
 
 
-class Running(Training):    # кончено
+class Running(Training):
     """Тренировка: бег."""
     coef_1r = 18
     coef_2r = 20
@@ -78,7 +78,7 @@ class Running(Training):    # кончено
         return cal_r
 
 
-class SportsWalking(Training):    # кончено
+class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
     coef_1sw = 0.035
     coef_2sw = 0.029
@@ -99,7 +99,7 @@ class SportsWalking(Training):    # кончено
         return cal_sw
 
 
-class Swimming(Training):    # кончено
+class Swimming(Training):
     """Тренировка: плавание."""
     LEN_STEP = 1.38
     coef_1s = 1.1
@@ -124,10 +124,10 @@ class Swimming(Training):    # кончено
         return cal_s
 
 
-if __name__ == '__main__':    # вроде норм
+if __name__ == '__main__':
     packages = [
         ('SWM', [720, 1, 80, 25, 40]),
-        ('RUN', [15000, 1, 75]),  # 1206, 16, 6
+        ('RUN', [15000, 1, 75]),
         ('WLK', [9000, 1, 75, 180]),
     ]
 
