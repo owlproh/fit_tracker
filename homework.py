@@ -1,5 +1,5 @@
 from dataclasses import asdict, dataclass
-from typing import ClassVar
+from typing import ClassVar, Type
 
 
 @dataclass
@@ -108,13 +108,12 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-    trains: dict[str, type[Training]] = {'SWM': Swimming,
-                                         'RUN': Running,
-                                         'WLK': SportsWalking}
-    if workout_type in trains:
-        return trains[workout_type](*data)
-    else:
+    trains: dict[str, Type] = {'SWM': Swimming,    # вместо Type можно
+                               'RUN': Running,    # использовать type[Training]
+                               'WLK': SportsWalking}
+    if workout_type not in trains:        # избавились от else: :)
         raise KeyError('Такой тренировки не предусмотрено!')
+    return trains[workout_type](*data)
 
 
 def main(training: Training) -> None:
