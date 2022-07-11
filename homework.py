@@ -108,9 +108,11 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-    trains: dict[str, Type] = {'SWM': Swimming,    # вместо Type можно
-                               'RUN': Running,    # использовать type[Training]
-                               'WLK': SportsWalking}
+    '''Вместо Type[Training] можно использовать как Type так
+    и type[Training]'''
+    trains: dict[str, Type[Training]] = {'SWM': Swimming,
+                                         'RUN': Running,
+                                         'WLK': SportsWalking}
     if workout_type not in trains:        # избавились от else: :)
         raise KeyError('Такой тренировки не предусмотрено!')
     return trains[workout_type](*data)
